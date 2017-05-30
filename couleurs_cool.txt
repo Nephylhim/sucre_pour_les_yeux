@@ -1,0 +1,3 @@
+bleu pastel :
+    #41BDF2
+    #268BD2

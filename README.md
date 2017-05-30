@@ -4,27 +4,27 @@ img{
 }
 </style>
 
-#Sucre pour les yeux
+# Sucre pour les yeux
 
 Ce document a pour but de recenser les thèmes/icones/polices/add-ons/etc. que j'ai installé afin d'avoir un environnement de travail ergonomique et plaisant à regarder.
 
 Les ajouts seront regroupés par système de parent->add
 
-##Gnome-shell
+## Gnome-shell
 
-###Thèmes
+### Thèmes
 
 Au choix :
 
 * Arc
 * Adapta (flat)
 
-###Icones
+### Icones
 
 * Arc
 * Paper (à utiliser avec Adapta)
 
-###Extensions
+### Extensions
 
 A aller ajouter sur Gnome Tweak Tool
 
@@ -37,9 +37,9 @@ A aller ajouter sur Gnome Tweak Tool
 * Topicons plus
 * Users Themes
 
-##Shell
+## Shell
 
-###ZSH
+### ZSH
 
 Installer oh-my-zsh !
 

@@ -1,9 +1,3 @@
-<style>
-img{
-	width: 100%;
-}
-</style>
-
 # Sucre pour les yeux
 
 Ce document a pour but de recenser les thèmes/icones/polices/add-ons/etc. que j'ai installé afin d'avoir un environnement de travail ergonomique et plaisant à regarder.
@@ -99,6 +93,18 @@ ibeam
 Droid Sans Mono Awesome 12
 ```
 
+## Git
+
+### gitconfig
+
+fichier `.gitconfig` dans le home dir.
+
+```
+[alias]
+	pushdev = !git push --set-upstream origin "`git branch --no-color 2>/dev/null | grep '*' | sed -e 's/\\* //'`:dev/tcoussot/`git branch --no-color 2>/dev/null | grep '*' | sed -e 's/\\* //'`"
+	shit = !git add . && git commit -m
+```
+
 ## Atom
 
 ### Thèmes
@@ -110,7 +116,12 @@ Droid Sans Mono Awesome 12
 
 * platformio-ide-terminal
 * bottom-dock
-* todo-manager
+* todo-show
+* highlight-selected
+* minimap
+* minimap-highlight-selected
+* pretty-json
+* split-diff
 
 ### Packages situationnels
 
@@ -120,7 +131,37 @@ Markdown :
 * language-markdown
 * markdown-writer
 
-HTML :
+Web :
 
 * emmet
 * autoclose-html
+* atom-ternjs
+* atom-typescript
+
+## VS Code
+
+### Thèmes
+
+* Sublim Material Theme
+* Material Icon Theme
+
+### Packages
+
+* expand-region
+* IntelliJ IDEA Keybindings
+* Python
+
+### Conf
+
+```
+{
+    "workbench.colorTheme": "Sublime Material Theme - Dark",
+    "workbench.iconTheme": "material-icon-theme",
+    "files.autoSave": "onFocusChange",
+    "editor.tabCompletion": true,
+    "window.menuBarVisibility": "toggle",
+    "terminal.enableAppInsights": false,
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 100
+}
+```

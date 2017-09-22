@@ -144,12 +144,18 @@ Web :
 
 * Sublim Material Theme
 * Material Icon Theme
+* Simple icon theme
 
 ### Packages
 
 * expand-region
 * IntelliJ IDEA Keybindings
 * Python
+* ESLint
+* EditorConfig for VS Code
+* JS Refactorings
+* toggler
+* Ungit Tab
 
 ### Conf
 
@@ -160,8 +166,15 @@ Web :
     "files.autoSave": "onFocusChange",
     "editor.tabCompletion": true,
     "window.menuBarVisibility": "toggle",
-    "terminal.enableAppInsights": false,
     "editor.wordWrap": "bounded",
-    "editor.wordWrapColumn": 100
+    "editor.wordWrapColumn": 100,
+    "latex-workshop.chktex.enabled": true,
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "emmet.showExpandedAbbreviation": "always",
+    "zenMode.hideTabs": false,
+    "files.insertFinalNewline": true,
+    "editor.fontSize": 13
 }
 ```

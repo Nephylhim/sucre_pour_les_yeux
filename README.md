@@ -142,19 +142,29 @@ Web :
 
 ### Thèmes
 
-* Sublim Material Theme
-* Material Icon Theme
-* Simple icon theme
+* choose one theme:
+    * Sublim Material Theme
+    * Atom One Dark Theme
+* choose one icon theme:
+    * Material Icon Theme
+    * Simple icon theme
 
 ### Packages
 
-* expand-region
-* IntelliJ IDEA Keybindings
-* Python
-* ESLint
+* Comment V
 * EditorConfig for VS Code
-* JS Refactorings
+* ESLint
+* expand-region
+* Git History
+* Go
+* IntelliJ IDEA Keybindings
+* JS Refactor
+* Partial Diff
+* Puppet
+* Python
 * toggler
+* vscode-database
+* warpsript-language
 * Ungit Tab
 
 ### Conf

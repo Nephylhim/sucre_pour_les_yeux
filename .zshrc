@@ -59,7 +59,8 @@ ENABLE_CORRECTION="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=6
-plugins=(git archlinux autojump common-aliases zsh-autosuggestions)
+plugins=(git git-auto-fetch common-aliases zsh-autosuggestions colored-man-pages colorize command-not-found dircycle go)
+# contextual: archlinux nvm
 
 source $ZSH/oh-my-zsh.sh
 
@@ -99,95 +100,41 @@ export CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 
 #source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-#[[ $- != *i* ]] && return
-#[[ $(ps -p $PPID -o cmd=) == fish ]] && return
-#exec fish
-alias isen-eth='sudo ip route add default via 172.18.0.1'
-alias beaglebone='ssh 172.18.6.48 -l tcouss'
-alias beaglebone-root='ssh 172.18.6.48 -l root'
-
- alias vtff='killall'
+alias vtff='killall'
 # function vtff(){
 #     prog="$@"
 #     cmd=$(ps -ef | pgrep $prog | head -n1)
 #     kill $cmd
 # }
 
-function goto(){
-    cmd="$@"
-    if [[ $cmd == "-l" || $cmd == "--list" || $cmd == "list" ]]; then
-        echo "Liste des alias :"; echo ""
-        while read line; do
-            alias=${line%:*}
-            pwd=${line#*:}
-            echo "$alias -> $pwd"
-        done < /home/thomas/.gotoFct
-    else
-        if [[ $1 == "-a" || $1 == "--add"  || $1 == "add" ]]; then
-            if [[ $# != 3 ]]; then
-                echo "La commande est goto add <alias> <pwd>"
-                echo "Tapez 'goto -h' pour afficher l'aide"
-            else
-                new="$2:$3"
-                echo $new >> /home/thomas/.gotoFct
-            fi
-        else
-            if [[ $1 == "-r" || $1 == "--remove" || $1 == "remove" ]]; then
-                if [[ $# != 2 ]]; then
-                    echo "La commande est goto -r <alias>"
-                    echo "Tapez 'goto -h' pour afficher l'aide"
-                else
-                    sed -i.bak "/$2*/d" /home/thomas/.gotoFct
-                    echo "$2 supprimé !"
-                fi
-            else
-                if [[ $1 == "-h" || $1 == "--help" || $1 == "help" ]]; then
-                    echo "Utilisation : goto ALIAS"
-                    echo "         ou : goto OPTION ALIAS [CHEMIN]"
-                    echo "Permet de se déplacer rapidement dans l'arborescence via des alias."
-                    echo "Les alias/chemins sont ajoutés au fichier ~/.gotoFct"
-                    echo ""
-                    echo "Options :"
-                    echo "  -l, --list, list            Liste les alias disponibles suivis de leur chemin"
-                    echo "  -a, --add, add              Ajoute un alias dans la base"
-                    echo "  -r, --remove, remove        Supprime un alias dans la base"
-                    echo "  -h, --help, help            Affiche l'aide"
-                fi
-            fi
-        fi
-        if [[ $# == 1 ]]; then
-            trouve=0
-            while read line; do
-                alias=${line%:*}
-                pwd=${line#*:}
-                if [[ $alias == $1 ]]; then
-                    cd $pwd;
-                    trouve=1
-                    break;
-                fi
-            done < /home/thomas/.gotoFct
-            if [[ $trouve == 0 ]]; then
-                while read line; do
-                    alias=${line%:*}
-                    pwd=${line#*:}
-                    if [[ $alias == *$1* ]]; then
-                        cd $pwd;
-                        trouve=1
-                        break;
-                    fi
-                done < /home/thomas/.gotoFct
 
-                if [[ $trouve == 0 ]]; then
-                    echo "Alias non trouvé"
-                    echo "Tapez 'goto -h' pour afficher l'aide"
-                fi
-            fi
-        fi
-    fi
+large_separator="\n_____________________________________________________________________\n_____________________________________________________________________\n"
+small_separator="_____________________________________________________________________"
+
+function get_dir(){
+    echo $1 | sed -re 's|^(/.*)+/.*$|\1|g'
 }
 
+function lless(){
+    if [[ $# != 1 ]]; then
+        echo "lless need 1 arguments";
+    fi
+
+    ccat $1 | less
+}
+
+function cheat(){
+    curl cheat.sh/$1
+}
+
+function pkgfrom(){
+    dpkg -S $(which $1)
+}
+alias filefrom='dpkg -S'
+
 alias ll='ls -la --color=auto'
-alias osef='sudo $(history | tail -n1 | cut -c 8-)'
+alias osef='sudo !!'
+# alias osef='sudo $(history | tail -n1 | cut -c 8-)'
 #bash osef='sudo $(history | tail -n2 | head -n1 | cut -c 8-)'
 alias cl='clear'
 alias update='yaourt -Syu'
@@ -199,3 +146,19 @@ alias search='yaourt -Ss'
 alias install='yaourt -S'
 alias nazi='yaourt -Ss'
 alias kotoa_m1='ssh toto@172.31.0.14'
+
+alias dodo='shutdown now'
+alias resource='clear; source ~/.zshrc'
+alias zshrc='vim ~/.zshrc; clear; source ~/.zshrc'
+alias shardis='python -m SimpleHTTPServer'
+alias gt='goto'
+alias vimrc='vim ~/.vimrc; source ~/.vimrc'
+alias t2='tree -L 2'
+alias t3='tree -L 3'
+alias cl='clear'
+alias c='code .'
+alias s='sudo systemctl'
+alias hh='history | less'
+alias n='nautilus . &'
+alias cht='cht.sh'
+alias cheat='cht.sh'
